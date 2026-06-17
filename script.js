@@ -272,7 +272,3 @@ if (!loadResultFromUrl()) {
   quizBox.classList.add("hidden");
   resultBox.classList.add("hidden");
 }
-
-welcomeBox.classList.remove("hidden");
-quizBox.classList.add("hidden");
-resultBox.classList.add("hidden");
