@@ -113,6 +113,29 @@ const exportBtn = document.getElementById("export-btn");
 const progressText = document.getElementById("progress-text");
 const progressFill = document.getElementById("progress-fill");
 
+function isWeChatBrowser() {
+  return /MicroMessenger/i.test(navigator.userAgent);
+}
+
+function getQueryParam(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function loadResultFromUrl() {
+  const name = getQueryParam("name");
+  const score = parseInt(getQueryParam("score"), 10);
+  if (name && !Number.isNaN(score)) {
+    userName = name;
+    totalScore = score;
+    welcomeBox.classList.add("hidden");
+    quizBox.classList.add("hidden");
+    resultBox.classList.remove("hidden");
+    showResult();
+    return true;
+  }
+  return false;
+}
+
 // 加载题目
 function loadQuestion() {
   selectedScore = null;
@@ -192,6 +215,7 @@ startBtn.addEventListener("click", () => {
 
 // 显示结果
 function showResult() {
+  welcomeBox.classList.add("hidden");
   quizBox.classList.add("hidden");
   resultBox.classList.remove("hidden");
 
@@ -204,6 +228,8 @@ function showResult() {
   resultDesc.textContent = `你的总分是 ${totalScore} 分。\n\n${finalResult.detail}`;
   resultKeywords.textContent = finalResult.keywords;
   soilLove.textContent = finalResult.soilLove;
+
+  history.replaceState(null, "", `${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}`);
 
   // 隐藏全局底部 logo，显示并定位卡片内 logo
   const globalLogo = document.querySelector('.site-logo-global');
@@ -222,6 +248,12 @@ exportBtn.addEventListener("click", () => {
   const target = document.querySelector(".result-card--result");
   if (!target) return;
 
+  if (isWeChatBrowser()) {
+    const resultUrl = `${window.location.origin}${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}`;
+    window.location.href = resultUrl;
+    return;
+  }
+
   html2canvas(target, {
     scale: 2,
     backgroundColor: null,
@@ -235,6 +267,12 @@ exportBtn.addEventListener("click", () => {
 });
 
 // 初始化
+if (!loadResultFromUrl()) {
+  welcomeBox.classList.remove("hidden");
+  quizBox.classList.add("hidden");
+  resultBox.classList.add("hidden");
+}
+
 welcomeBox.classList.remove("hidden");
 quizBox.classList.add("hidden");
 resultBox.classList.add("hidden");
