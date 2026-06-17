@@ -201,15 +201,14 @@ startBtn.addEventListener("click", () => {
   welcomeBox.classList.add("hidden");
   quizBox.classList.remove("hidden");
   loadQuestion();
-  // 恢复全局底部 logo，隐藏结果卡片内 logo（如果存在）
-  const globalLogo = document.querySelector('.site-logo-global');
-  if (globalLogo) {
-    globalLogo.style.display = '';
-  }
-  const resultLogoHide = document.getElementById('result-logo');
-  if (resultLogoHide) {
-    resultLogoHide.classList.remove('visible');
-    resultLogoHide.classList.add('hidden');
+  
+  // 隐藏欢迎页 logo，显示答题页 logo
+  const welcomeLogo = document.getElementById('welcome-logo');
+  const quizLogo = document.getElementById('quiz-logo');
+  if (welcomeLogo) welcomeLogo.classList.add('hidden');
+  if (quizLogo) {
+    quizLogo.classList.remove('hidden');
+    quizLogo.classList.add('visible');
   }
 });
 
@@ -231,13 +230,13 @@ function showResult() {
 
   history.replaceState(null, "", `${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}`);
 
-  // 隐藏全局底部 logo，显示并定位卡片内 logo
-  const globalLogo = document.querySelector('.site-logo-global');
-  if (globalLogo) {
-    globalLogo.style.display = 'none';
-  }
-
+  // 显示结果页 logo，隐藏其他页面 logo
+  const welcomeLogo = document.getElementById('welcome-logo');
+  const quizLogo = document.getElementById('quiz-logo');
   const resultLogo = document.getElementById('result-logo');
+  
+  if (welcomeLogo) welcomeLogo.classList.add('hidden');
+  if (quizLogo) quizLogo.classList.add('hidden');
   if (resultLogo) {
     resultLogo.classList.remove('hidden');
     resultLogo.classList.add('visible');
@@ -271,4 +270,15 @@ if (!loadResultFromUrl()) {
   welcomeBox.classList.remove("hidden");
   quizBox.classList.add("hidden");
   resultBox.classList.add("hidden");
-}
+  
+  // 显示欢迎页 logo，隐藏其他 logo
+  const welcomeLogo = document.getElementById('welcome-logo');
+  const quizLogo = document.getElementById('quiz-logo');
+  const resultLogo = document.getElementById('result-logo');
+  if (welcomeLogo) {
+    welcomeLogo.classList.remove('hidden');
+    welcomeLogo.classList.add('visible');
+  }
+  if (quizLogo) quizLogo.classList.add('hidden');
+  if (resultLogo) resultLogo.classList.add('hidden');
+} 

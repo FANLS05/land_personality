@@ -45,6 +45,11 @@ header p {
   margin-bottom: 24px;
 }
 
+/* 答题卡片 */
+.quiz-card {
+  position: relative;
+}
+
 #welcome-box {
   text-align: center;
   margin-bottom: 24px;
@@ -347,31 +352,11 @@ button:disabled {
   }
 }
 
-/* 浮动 logo：通过 JS 设置 top/left，使其在结果页下方跟随 */
-/* 全局固定底部 logo，保留原来在所有页面底部居中的展示 */
-.site-logo-global {
-  position: fixed;
-  bottom: 18px;
-  left: 50%;
-  /* 缩放为 120%（即原先 150% 的 80%），向下移动到 72px（微调，上移一点） */
-  transform: translateX(-50%) translateY(72px) scale(1.2);
-  transform-origin: center bottom;
-  z-index: 1000;
-  pointer-events: none;
-}
-.site-logo-global img {
-  display: block;
-  width: min(18vw, 140px);
-  height: auto;
-  opacity: 0.95;
-  max-width: 140px;
-}
-
 /* 结果卡片内的 logo（绝对定位，相对于 .result-card--result） */
 .result-card--result {
   position: relative;
 }
-.result-logo {
+.card-logo {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -381,15 +366,15 @@ button:disabled {
   pointer-events: none;
   transition: opacity 120ms linear, transform 120ms linear;
 }
-.result-logo.hidden {
+.card-logo.hidden {
   opacity: 0;
   display: none;
 }
-.result-logo.visible {
+.card-logo.visible {
   opacity: 1;
   display: block;
 }
-.result-logo img {
+.card-logo img {
   width: min(18vw, 140px);
   height: auto;
   max-width: 140px;
@@ -400,27 +385,13 @@ button:disabled {
 }
 
 @media screen and (max-width: 600px) {
-  .site-logo-global {
-    bottom: 86px; /* 避免和移动端底部固定按钮重叠 */
-  }
-  .site-logo-global img {
-    width: min(26vw, 110px);
-    height: auto;
-  }
-  .result-logo img {
+  .card-logo img {
     width: min(26vw, 110px);
   }
 }
 
 @media screen and (max-width: 380px) {
-  .site-logo-global {
-    bottom: 96px;
-  }
-  .site-logo-global img {
-    width: min(34vw, 90px);
-    height: auto;
-  }
-  .result-logo img {
+  .card-logo img {
     width: min(34vw, 90px);
   }
 }
