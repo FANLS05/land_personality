@@ -52,41 +52,41 @@ const results = [
   {
     min: 5,
     max: 8,
-    title: "1、盐碱地・低调努力型",
-    detail: "你看起来外表平平无奇，甚至有点 “贫瘠”。\n但只有你自己知道，\n你的内心正在悄悄积蓄力量。\n你习惯在沉默中努力，不张扬，不抱怨。\n期末周的压力，对你来说就像一场春雨，\n只要熬过去，你就能开出最顽强的花。",
-    soilLove: "你是盐碱地，虽然外表贫瘠，\n但只要遇到一场好雨（或者一场考试），\n你就能爆发出最惊人的生命力。\n别急，你只是在蛰伏。",
+    title: "盐碱地・低调努力型",
+    detail: "你看起来外表平平无奇，甚至有点 “贫瘠”。但只有你自己知道，你的内心正在悄悄积蓄力量。你习惯在沉默中努力，不张扬，不抱怨。\n期末周的压力，对你来说就像一场春雨，只要熬过去，你就能开出最顽强的花。",
+    soilLove: "你是盐碱地，虽然外表贫瘠，但只要遇到一场好雨（或者一场考试），你就能爆发出最惊人的生命力。别急，你只是在蛰伏。",
     keywords: "外冷内热、慢热、倔强、需要被理解"
   },
   {
     min: 9,
     max: 12,
-    title: "2、松弛沙土・快乐摆烂型",
-    detail: "主打一个 “我想开了”。\n风来了，你随之流走；雨来了，你变成泥巴。\n但你也因此拥有别人没有的潇洒与自由。\n期末周？不存在的。\n你的策略是 —— 随缘复习，快乐至上。\n反正天塌下来，你也能找到一片沙地躺下。",
-    soilLove: "你是松弛沙土，虽然看似松散，\n但沙土也能堆起最美的堡垒。\n你只是选择用轻松的方式，对抗世界的沉重。",
+    title: "松弛沙土・快乐摆烂型",
+    detail: "主打一个 “我想开了”。风来了，你随之流走；雨来了，你变成泥巴。但你也因此拥有别人没有的潇洒与自由。\n期末周？不存在的。你的策略是 —— 随缘复习，快乐至上。反正天塌下来，你也能找到一片沙地躺下。",
+    soilLove: "你是松弛沙土，虽然看似松散，但沙土也能堆起最美的堡垒。你只是选择用轻松的方式，对抗世界的沉重。",
     keywords: "随缘、松弛、自由、适应力强"
   },
   {
     min: 13,
     max: 16,
-    title: "3、珍稀黑土・稳重学霸型",
-    detail: "你就是传说中的 “别人家的孩子”。\n深沉、肥沃、稳定，\n拥有极强的承载力和爆发力。\n期末周对你来说，不过是按计划走一遍流程。\n你从不慌乱，也从不畏惧。\n因为你深知：只要根基扎实，就没什么能把你击垮。",
-    soilLove: "你是珍稀黑土，深邃而稳重。\n你每一次的积累，都在孕育最丰盛的果实。\n别怕，你的地基很稳，稳到能托起整个天空。",
+    title: "珍稀黑土・稳重学霸型",
+    detail: "你就是传说中的 “别人家的孩子”。深沉、肥沃、稳定，拥有极强的承载力和爆发力。\n期末周对你来说，不过是按计划走一遍流程。你从不慌乱，也从不畏惧。因为你深知：只要根基扎实，就没什么能把你击垮。",
+    soilLove: "你是珍稀黑土，深邃而稳重。你每一次的积累，都在孕育最丰盛的果实。别怕，你的地基很稳，稳到能托起整个天空。",
     keywords: "稳定、靠谱、有潜力、值得信赖"
   },
   {
     min: 17,
     max: 19,
-    title: "4、高敏感黏土・细腻共情者",
-    detail: "你的内心世界非常丰富。\n一点点触动，都能在你心里留下深深的印记。\n你温柔、细腻，总是能感知到别人的情绪。\n但这也让你容易内耗。\n期末周里，你可能会因为别人的一句话、一个眼神而辗转反侧。\n请记住：你不需要对所有人负责，你只需要对自己温柔。",
-    soilLove: "你是高敏感黏土，温柔得像会捏碎所有烦恼。\n你的细腻是天赋，不是包袱。\n这个期末周，请先对自己好一点。",
+    title: "高敏感黏土・细腻共情者",
+    detail: "你的内心世界非常丰富。一点点触动，都能在你心里留下深深的印记。你温柔、细腻，总是能感知到别人的情绪。但这也让你容易内耗。\n期末周里，你可能会因为别人的一句话、一个眼神而辗转反侧。请记住：你不需要对所有人负责，你只需要对自己温柔。",
+    soilLove: "你是高敏感黏土，温柔得像会捏碎所有烦恼。你的细腻是天赋，不是包袱。这个期末周，请先对自己好一点。",
     keywords: "敏感、细腻、共情、观察力强"
   },
   {
     min: 20,
     max: 20,
-    title: "5、暴烈红土・行动派冲劲型",
-    detail: "你心里有一团火。\n热情、冲动、充满爆发力。\n期末周对你来说就是一场战斗 —— 冲就完了，不留退路。\n你从不畏惧困难，甚至享受挑战带来的刺激感。\n但有时候，你也会因为太着急而忽略细节。\n这周冲刺复习时，记得稍微给自己降降温。",
-    soilLove: "你是暴烈红土，热烈得像一团不灭的火焰。\n你天生适合燃烧，但也请记得给自己留一点喘息的空间。\n慢一点，也能赢。",
+    title: "暴烈红土・行动派冲劲型",
+    detail: "你心里有一团火。热情、冲动、充满爆发力。你从不畏惧困难，甚至享受挑战带来的刺激感，但有时候，你也会因为太着急而忽略细节。\n期末周对你来说就是一场战斗 —— 冲就完了，不留退路。这周冲刺复习时，记得稍微给自己降降温。",
+    soilLove: "你是暴烈红土，热烈得像一团不灭的火焰。你天生适合燃烧，但也请记得给自己留一点喘息的空间。慢一点，也能赢。",
     keywords: "热烈、冲劲、行动派、生命力爆棚"
   }
 ];
@@ -151,6 +151,8 @@ function loadQuestion() {
   }
 }
 
+// 结果页 logo 现在为文档流内元素，位置由 CSS 与布局控制，无需 JS 动态定位。
+
 // 点击下一题
 nextBtn.addEventListener("click", () => {
   if (selectedScore === null) return;
@@ -176,6 +178,16 @@ startBtn.addEventListener("click", () => {
   welcomeBox.classList.add("hidden");
   quizBox.classList.remove("hidden");
   loadQuestion();
+  // 恢复全局底部 logo，隐藏结果卡片内 logo（如果存在）
+  const globalLogo = document.querySelector('.site-logo-global');
+  if (globalLogo) {
+    globalLogo.style.display = '';
+  }
+  const resultLogoHide = document.getElementById('result-logo');
+  if (resultLogoHide) {
+    resultLogoHide.classList.remove('visible');
+    resultLogoHide.classList.add('hidden');
+  }
 });
 
 // 显示结果
@@ -192,6 +204,18 @@ function showResult() {
   resultDesc.textContent = `你的总分是 ${totalScore} 分。\n\n${finalResult.detail}`;
   resultKeywords.textContent = finalResult.keywords;
   soilLove.textContent = finalResult.soilLove;
+
+  // 隐藏全局底部 logo，显示并定位卡片内 logo
+  const globalLogo = document.querySelector('.site-logo-global');
+  if (globalLogo) {
+    globalLogo.style.display = 'none';
+  }
+
+  const resultLogo = document.getElementById('result-logo');
+  if (resultLogo) {
+    resultLogo.classList.remove('hidden');
+    resultLogo.classList.add('visible');
+  }
 }
 
 exportBtn.addEventListener("click", () => {

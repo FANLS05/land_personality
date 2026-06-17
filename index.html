@@ -55,6 +55,10 @@
               <h3>给你的土壤情话</h3>
               <p id="soil-love">“你是盐碱地，虽然外表贫瘠，但只要遇到一场好雨（或者一场考试），你就能爆发出最惊人的生命力。别急，你只是在蛰伏。”</p>
             </div>
+            <!-- 结果页内的 logo：置于结果卡片同一层级，初始隐藏 -->
+            <div id="result-logo" class="result-logo hidden" aria-hidden="true">
+              <img src="data/clst_logo.png" alt="CLST Logo">
+            </div>
           </div>
         </div>
 
@@ -65,7 +69,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <script src="script.js"></script>
-  <footer class="site-logo" aria-hidden="true">
+  <!-- 全局固定底部 logo（保留原来的展示行为） -->
+  <footer class="site-logo-global" aria-hidden="true">
     <img src="data/clst_logo.png" alt="CLST Logo">
   </footer>
 </body>
