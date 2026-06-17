@@ -1,0 +1,387 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: "Microsoft YaHei", Arial, sans-serif;
+  background: linear-gradient(135deg, #dff3e3, #f8f1d8);
+  color: #333;
+  min-height: 100vh;
+}
+
+/* 主容器 */
+.container {
+  width: min(92%, 760px);
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 顶部标题 */
+header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+header h1 {
+  margin: 0 0 10px;
+  color: #2d6a4f;
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+}
+
+header p {
+  color: #666;
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
+}
+
+/* 进度条 */
+.progress {
+  margin-bottom: 24px;
+}
+
+#welcome-box {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.welcome-card {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 24px;
+  padding: 28px 24px;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+  max-width: 620px;
+  margin: 0 auto 24px;
+}
+
+.welcome-card h2 {
+  margin: 0 0 10px;
+  color: #2d6a4f;
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+}
+
+.welcome-card p {
+  margin: 0 0 22px;
+  color: #556d59;
+  font-size: 1rem;
+}
+
+.input-row {
+  margin-bottom: 20px;
+}
+
+#name-input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #c7d7c2;
+  font-size: 1rem;
+  color: #2d4f39;
+}
+
+#name-input:focus {
+  outline: none;
+  border-color: #52b788;
+  box-shadow: 0 0 0 4px rgba(82, 183, 136, 0.12);
+}
+
+#progress-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e5e5e5;
+  border-radius: 20px;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+#progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #52b788;
+  transition: width 0.3s;
+}
+
+/* 题目 */
+#question-title {
+  font-size: clamp(1.2rem, 4.5vw, 1.55rem);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* 选项 */
+.option {
+  background: #f7f7f7;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  padding: 15px 16px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  line-height: 1.5;
+  font-size: clamp(1rem, 3.8vw, 1.1rem);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.option:hover {
+  background: #e9f5ec;
+}
+
+.option.selected {
+  border-color: #40916c;
+  background: #d8f3dc;
+}
+
+/* 按钮 */
+button {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 15px;
+  margin-top: 24px;
+  font-size: clamp(1rem, 4vw, 1.15rem);
+  cursor: pointer;
+  background: #40916c;
+  color: white;
+  transition: 0.2s;
+  min-height: 48px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:hover {
+  background: #2d6a4f;
+}
+
+button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 结果页 */
+#result-box {
+  text-align: center;
+}
+
+.result-card--result {
+  background: linear-gradient(180deg, #fafaf4 0%, #edf6eb 100%);
+  border: 1px solid rgba(75, 99, 77, 0.12);
+  border-radius: 26px;
+  padding: 22px;
+  margin-top: 12px;
+  box-shadow: 0 18px 40px rgba(33, 61, 36, 0.08);
+}
+
+.result-card__header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.result-card__header h2 {
+  margin: 0;
+  color: #d67b3a;
+  font-size: clamp(1.6rem, 4.5vw, 2rem);
+}
+
+.result-card__subtitle {
+  margin: 10px auto 0;
+  max-width: 680px;
+  color: #465742;
+  font-size: clamp(1rem, 3vw, 1.1rem);
+  line-height: 1.65;
+}
+
+.result-card__subtitle strong {
+  color: #2d6a4f;
+}
+
+.result-card__body {
+  text-align: left;
+  color: #4a5c47;
+  font-size: clamp(0.92rem, 3.2vw, 0.98rem);
+  line-height: 1.65;
+}
+
+.soil-love-box {
+  margin-top: 22px;
+  padding: 18px 18px;
+  background: rgba(236, 248, 233, 0.95);
+  border-radius: 18px;
+  border: 1px solid rgba(82, 183, 136, 0.18);
+}
+
+.soil-love-box h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  color: #2d6a4f;
+}
+
+#soil-love {
+  margin: 0;
+  white-space: pre-line;
+  color: #3d5c43;
+  line-height: 1.8;
+  font-size: clamp(0.92rem, 3vw, 0.98rem);
+}
+
+.result-keywords-box {
+  margin-top: 22px;
+  padding: 16px 18px;
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: 16px;
+  border: 1px solid rgba(72, 118, 71, 0.12);
+}
+
+.result-keywords-box h3 {
+  margin: 0 0 10px;
+  color: #2d6a4f;
+  font-size: 1.05rem;
+}
+
+#result-keywords {
+  margin: 0;
+  line-height: 1.8;
+}
+
+#result-desc {
+  margin: 0;
+  white-space: normal;
+  font-size: clamp(0.92rem, 3.2vw, 0.98rem);
+  line-height: 1.7;
+}
+
+.export-btn {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 14px;
+  margin-top: 18px;
+  font-size: clamp(0.95rem, 3.2vw, 1rem);
+  cursor: pointer;
+  background: #2d6a4f;
+  color: white;
+  transition: 0.2s;
+  min-height: 44px;
+}
+
+.export-btn:hover {
+  background: #25573d;
+}
+
+
+/* 手机端进一步优化 */
+@media screen and (max-width: 600px) {
+  body {
+    background: linear-gradient(180deg, #dff3e3, #f8f1d8);
+  }
+
+  .container {
+    width: 94%;
+    margin: 16px auto;
+    padding: 22px 18px;
+    border-radius: 18px;
+  }
+
+  header {
+    margin-bottom: 22px;
+  }
+
+  header h1 {
+    line-height: 1.25;
+  }
+
+  #question-title {
+    margin-bottom: 20px;
+  }
+
+  .option {
+    padding: 14px;
+    margin-bottom: 12px;
+    border-radius: 13px;
+  }
+
+  button {
+    position: sticky;
+    bottom: 12px;
+    box-shadow: 0 6px 16px rgba(45, 106, 79, 0.25);
+  }
+
+  #result-title {
+    line-height: 1.25;
+  }
+
+  .result-card {
+    padding: 16px;
+  }
+}
+
+/* 超小屏幕优化，例如部分旧手机 */
+@media screen and (max-width: 380px) {
+  .container {
+    width: 96%;
+    padding: 18px 14px;
+  }
+
+  .option {
+    font-size: 0.98rem;
+    padding: 13px;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+}
+
+/* 固定底部 logo，显示在每一页下方 */
+.site-logo {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%) scale(0.75);
+  transform-origin: center bottom;
+  z-index: 1000;
+  pointer-events: none;
+}
+.site-logo img {
+  display: block;
+  width: min(18vw, 140px);
+  height: auto;
+  opacity: 0.95;
+  max-width: 140px;
+}
+
+@media screen and (max-width: 600px) {
+  .site-logo {
+    bottom: 86px; /* 避免和移动端底部固定按钮重叠 */
+  }
+  .site-logo img {
+    width: min(26vw, 110px);
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .site-logo {
+    bottom: 96px;
+  }
+  .site-logo img {
+    width: min(34vw, 90px);
+    height: auto;
+  }
+}

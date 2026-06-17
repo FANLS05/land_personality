@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>土地类型人格测试</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <main>
+      <div id="welcome-box">
+        <div class="welcome-card">
+          <h2>欢迎来到土地类型人格测试</h2>
+          <p>请输入你的姓名，开始测试你的土地人格。</p>
+          <div class="input-row">
+            <input id="name-input" type="text" placeholder="请输入姓名">
+          </div>
+          <button id="start-btn">开始测试</button>
+        </div>
+      </div>
+
+      <div id="quiz-box" class="hidden">
+        <div class="progress">
+          <span id="progress-text">第 1 题 / 共 8 题</span>
+          <div class="progress-bar">
+            <div id="progress-fill"></div>
+          </div>
+        </div>
+
+        <h2 id="question-title">题目加载中...</h2>
+
+        <div id="options"></div>
+
+        <button id="next-btn">下一题</button>
+      </div>
+
+      <div id="result-box" class="hidden">
+        <div class="result-card result-card--result">
+          <div class="result-card__header">
+            <h2 id="result-heading">XXX同学，你的土地类型人格是：</h2>
+            <p class="result-card__subtitle"><strong id="result-title">盐碱地・低调努力型</strong></p>
+          </div>
+
+          <div class="result-card__body">
+            <p id="result-desc">这里是示例文字，用于展示结果页的段落样式，内容会保持与页面整体色调一致，文字先填充示例文字。</p>
+
+            <div class="result-keywords-box">
+              <h3>人格关键词</h3>
+              <p id="result-keywords">外冷内热、慢热、倔强、需要被理解</p>
+            </div>
+
+            <div class="soil-love-box">
+              <h3>给你的土壤情话</h3>
+              <p id="soil-love">“你是盐碱地，虽然外表贫瘠，但只要遇到一场好雨（或者一场考试），你就能爆发出最惊人的生命力。别急，你只是在蛰伏。”</p>
+            </div>
+          </div>
+        </div>
+
+        <button id="export-btn" class="export-btn">导出结果图片</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+  <footer class="site-logo" aria-hidden="true">
+    <img src="data/clst_logo.png" alt="CLST Logo">
+  </footer>
+</body>
+</html>
