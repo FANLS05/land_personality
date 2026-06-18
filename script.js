@@ -298,16 +298,17 @@ function showResult() {
   soilLove.textContent = soilLoveText;
 
   const markerElement = document.getElementById("result-marker");
+  // 统一生成 marker（即便页面上没有 marker 元素），并把 marker 写入 URL
+  const nameText = userName.trim();
+  const answerText = answers.join("");
+  const payload = `${nameText.length}/${nameText}${answerText}`;
+  const encoded = btoa(unescape(encodeURIComponent(payload))).replace(/=+$/, "");
   if (markerElement) {
-    const nameText = userName.trim();
-    const answerText = answers.join("");
-    const payload = `${nameText.length}/${nameText}${answerText}`;
-    const encoded = btoa(unescape(encodeURIComponent(payload))).replace(/=+$/, "");
     markerElement.textContent = encoded;
   }
 
   const answersParam = encodeURIComponent(answers.join(""));
-  history.replaceState(null, "", `${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}&answers=${answersParam}`);
+  history.replaceState(null, "", `${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}&answers=${answersParam}&marker=${encodeURIComponent(encoded)}`);
 
   // 显示结果页 logo，隐藏其他页面 logo
   const welcomeLogo = document.getElementById('welcome-logo');
