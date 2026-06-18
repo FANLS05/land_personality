@@ -293,7 +293,7 @@ function showResult() {
 
   resultHeading.textContent = `${userName}同学，\n你的土地类型人格是：`;
   resultTitle.textContent = titleWithSubtype;
-  resultDesc.textContent = `你的总分是 ${totalScore} 分。\n\n${detail}`;
+  resultDesc.textContent = detail;
   resultKeywords.textContent = keywordsText;
   soilLove.textContent = soilLoveText;
 
