@@ -192,7 +192,7 @@ button:disabled {
 }
 
 .result-card__header {
-  text-align: center;
+  text-align: left;
   margin-bottom: 18px;
 }
 
@@ -200,6 +200,7 @@ button:disabled {
   margin: 0;
   color: #d67b3a;
   font-size: clamp(1.6rem, 4.5vw, 2rem);
+  white-space: pre-line;
 }
 
 .result-card__subtitle {
@@ -208,6 +209,7 @@ button:disabled {
   color: #465742;
   font-size: clamp(1rem, 3vw, 1.1rem);
   line-height: 1.65;
+  text-align: center;
 }
 
 .result-card__subtitle strong {

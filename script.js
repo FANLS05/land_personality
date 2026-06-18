@@ -284,7 +284,7 @@ function showResult() {
     ? group.keywords.join("、")
     : group?.keywords || finalResult.keywords;
 
-  resultHeading.textContent = `${userName}同学，你的土地类型人格是：`;
+  resultHeading.textContent = `${userName}同学，\n你的土地类型人格是：`;
   resultTitle.textContent = titleWithSubtype;
   resultDesc.textContent = `你的总分是 ${totalScore} 分。\n\n${detail}`;
   resultKeywords.textContent = keywordsText;
