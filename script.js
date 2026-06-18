@@ -140,6 +140,8 @@ function pickGroupBySeed(title, name, score) {
 
 let currentQuestionIndex = 0;
 let selectedScore = null;
+let selectedChoice = null;
+let answers = [];
 let totalScore = 0;
 let userName = "";
 
@@ -186,6 +188,7 @@ function loadResultFromUrl() {
 // 加载题目
 function loadQuestion() {
   selectedScore = null;
+  selectedChoice = null;
   nextBtn.disabled = true;
 
   const currentQuestion = questions[currentQuestionIndex];
@@ -208,6 +211,7 @@ function loadQuestion() {
 
       optionDiv.classList.add("selected");
       selectedScore = option.score;
+      selectedChoice = option.text.trim().slice(0, 1);
       nextBtn.disabled = false;
     });
 
@@ -227,6 +231,7 @@ function loadQuestion() {
 nextBtn.addEventListener("click", () => {
   if (selectedScore === null) return;
 
+  answers.push(selectedChoice || "?");
   totalScore += selectedScore;
   currentQuestionIndex++;
 
@@ -289,6 +294,15 @@ function showResult() {
   resultDesc.textContent = `你的总分是 ${totalScore} 分。\n\n${detail}`;
   resultKeywords.textContent = keywordsText;
   soilLove.textContent = soilLoveText;
+
+  const markerElement = document.getElementById("result-marker");
+  if (markerElement) {
+    const nameText = userName.trim();
+    const answerText = answers.join("");
+    const payload = `${nameText.length}/${nameText}${answerText}`;
+    const encoded = btoa(unescape(encodeURIComponent(payload))).replace(/=+$/, "");
+    markerElement.textContent = encoded;
+  }
 
   history.replaceState(null, "", `${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}`);
 
