@@ -173,9 +173,11 @@ function getQueryParam(name) {
 function loadResultFromUrl() {
   const name = getQueryParam("name");
   const score = parseInt(getQueryParam("score"), 10);
+  const answersParam = getQueryParam("answers");
   if (name && !Number.isNaN(score)) {
     userName = name;
     totalScore = score;
+    answers = answersParam ? answersParam.split("") : [];
     welcomeBox.classList.add("hidden");
     quizBox.classList.add("hidden");
     resultBox.classList.remove("hidden");
@@ -304,7 +306,8 @@ function showResult() {
     markerElement.textContent = encoded;
   }
 
-  history.replaceState(null, "", `${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}`);
+  const answersParam = encodeURIComponent(answers.join(""));
+  history.replaceState(null, "", `${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}&answers=${answersParam}`);
 
   // 显示结果页 logo，隐藏其他页面 logo
   const welcomeLogo = document.getElementById('welcome-logo');
