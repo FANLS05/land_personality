@@ -135,7 +135,7 @@ function pickGroupBySeed(title, name, score) {
   const seed = hashString(seedString);
   const rng = createSeededRng(seed);
   const index = Math.floor(rng() * groups.length);
-  return groups[index];
+  return { group: groups[index], index };
 }
 
 let currentQuestionIndex = 0;
@@ -269,7 +269,15 @@ function showResult() {
     return totalScore >= result.min && totalScore <= result.max;
   });
 
-  const group = pickGroupBySeed(finalResult.title, userName, totalScore);
+  const pick = pickGroupBySeed(finalResult.title, userName, totalScore);
+  const group = pick?.group || null;
+  const subtypeLetter = typeof pick?.index === "number"
+    ? String.fromCharCode(65 + (pick.index % 26))
+    : null;
+  const titleWithSubtype = subtypeLetter
+    ? `${finalResult.title} ${subtypeLetter}`
+    : finalResult.title;
+
   const detail = group?.detail || finalResult.detail;
   const soilLoveText = group?.soilLove || finalResult.soilLove;
   const keywordsText = Array.isArray(group?.keywords)
@@ -277,7 +285,7 @@ function showResult() {
     : group?.keywords || finalResult.keywords;
 
   resultHeading.textContent = `${userName}同学，你的土地类型人格是：`;
-  resultTitle.textContent = finalResult.title;
+  resultTitle.textContent = titleWithSubtype;
   resultDesc.textContent = `你的总分是 ${totalScore} 分。\n\n${detail}`;
   resultKeywords.textContent = keywordsText;
   soilLove.textContent = soilLoveText;
