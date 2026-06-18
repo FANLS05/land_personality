@@ -47,13 +47,13 @@ const questions = [
   }
 ];
 
-// 结果区间
-const results = [
+// 结果区间与默认内容
+const resultRanges = [
   {
     min: 5,
     max: 8,
     title: "盐碱地・低调努力型",
-    detail: "你看起来外表平平无奇，甚至有点 “贫瘠”。但只有你自己知道，你的内心正在悄悄积蓄力量。你习惯在沉默中努力，不张扬，不抱怨。\n期末周的压力，对你来说就像一场春雨，只要熬过去，你就能开出最顽强的花。",
+    detail: "你看起来低调不张扬，甚至有点 “隐身”。但只有你自己知道，你的内心正在悄悄积蓄力量。你习惯在沉默中努力，不张扬，不抱怨。\n期末周的压力，对你来说就像一场春雨。只要熬过去，你就能开出最顽强的花。",
     soilLove: "你是盐碱地，虽然外表贫瘠，但只要遇到一场好雨（或者一场考试），你就能爆发出最惊人的生命力。别急，你只是在蛰伏。",
     keywords: "外冷内热、慢热、倔强、需要被理解"
   },
@@ -90,6 +90,53 @@ const results = [
     keywords: "热烈、冲劲、行动派、生命力爆棚"
   }
 ];
+
+let resultGroupsMap = {};
+
+async function loadResultsData() {
+  try {
+    const response = await fetch("parsed_results.json", { cache: "no-store" });
+    if (!response.ok) {
+      throw new Error(`加载 parsed_results.json 失败，状态码：${response.status}`);
+    }
+
+    const data = await response.json();
+    data.forEach(item => {
+      if (item && item.title && Array.isArray(item.groups)) {
+        resultGroupsMap[item.title] = item.groups;
+      }
+    });
+  } catch (error) {
+    console.warn("加载结果数据失败，继续使用默认结果文案：", error);
+  }
+}
+
+function hashString(str) {
+  let hash = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    hash ^= str.charCodeAt(i);
+    hash = (hash * 16777619) >>> 0;
+  }
+  return hash;
+}
+
+function createSeededRng(seed) {
+  return function() {
+    seed = (seed * 1664525 + 1013904223) >>> 0;
+    return seed / 0x100000000;
+  };
+}
+
+function pickGroupBySeed(title, name, score) {
+  const groups = resultGroupsMap[title] || [];
+  if (!groups.length) return null;
+  const normalizedName = String(name).trim().toLowerCase();
+  const seedString = `${normalizedName}|${score}|${title}`;
+  const seed = hashString(seedString);
+  const rng = createSeededRng(seed);
+  const index = Math.floor(rng() * groups.length);
+  return groups[index];
+}
 
 let currentQuestionIndex = 0;
 let selectedScore = null;
@@ -218,15 +265,22 @@ function showResult() {
   quizBox.classList.add("hidden");
   resultBox.classList.remove("hidden");
 
-  const finalResult = results.find(result => {
+  const finalResult = resultRanges.find(result => {
     return totalScore >= result.min && totalScore <= result.max;
   });
 
+  const group = pickGroupBySeed(finalResult.title, userName, totalScore);
+  const detail = group?.detail || finalResult.detail;
+  const soilLoveText = group?.soilLove || finalResult.soilLove;
+  const keywordsText = Array.isArray(group?.keywords)
+    ? group.keywords.join("、")
+    : group?.keywords || finalResult.keywords;
+
   resultHeading.textContent = `${userName}同学，你的土地类型人格是：`;
   resultTitle.textContent = finalResult.title;
-  resultDesc.textContent = `你的总分是 ${totalScore} 分。\n\n${finalResult.detail}`;
-  resultKeywords.textContent = finalResult.keywords;
-  soilLove.textContent = finalResult.soilLove;
+  resultDesc.textContent = `你的总分是 ${totalScore} 分。\n\n${detail}`;
+  resultKeywords.textContent = keywordsText;
+  soilLove.textContent = soilLoveText;
 
   history.replaceState(null, "", `${window.location.pathname}?name=${encodeURIComponent(userName)}&score=${totalScore}`);
 
@@ -266,19 +320,21 @@ exportBtn.addEventListener("click", () => {
 });
 
 // 初始化
-if (!loadResultFromUrl()) {
-  welcomeBox.classList.remove("hidden");
-  quizBox.classList.add("hidden");
-  resultBox.classList.add("hidden");
-  
-  // 显示欢迎页 logo，隐藏其他 logo
-  const welcomeLogo = document.getElementById('welcome-logo');
-  const quizLogo = document.getElementById('quiz-logo');
-  const resultLogo = document.getElementById('result-logo');
-  if (welcomeLogo) {
-    welcomeLogo.classList.remove('hidden');
-    welcomeLogo.classList.add('visible');
+loadResultsData().then(() => {
+  if (!loadResultFromUrl()) {
+    welcomeBox.classList.remove("hidden");
+    quizBox.classList.add("hidden");
+    resultBox.classList.add("hidden");
+    
+    // 显示欢迎页 logo，隐藏其他 logo
+    const welcomeLogo = document.getElementById('welcome-logo');
+    const quizLogo = document.getElementById('quiz-logo');
+    const resultLogo = document.getElementById('result-logo');
+    if (welcomeLogo) {
+      welcomeLogo.classList.remove('hidden');
+      welcomeLogo.classList.add('visible');
+    }
+    if (quizLogo) quizLogo.classList.add('hidden');
+    if (resultLogo) resultLogo.classList.add('hidden');
   }
-  if (quizLogo) quizLogo.classList.add('hidden');
-  if (resultLogo) resultLogo.classList.add('hidden');
-} 
+});
